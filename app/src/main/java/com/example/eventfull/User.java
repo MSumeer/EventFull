@@ -1,26 +1,43 @@
 package com.example.eventfull;
 
-public abstract class User {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String userName;
-    private String id;
-    private int incorrectLoginAttempts;
-    private String password;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
+public abstract class User {
+    //Variables
+    private String firstName,lastName,email,id,postalCode,userName,password;
+    private int incorrectLoginAttempts;
+    private Calendar DOB = new GregorianCalendar();
+
+    //Constructors
     User(){
 
     }
     User(String firstName,String lastName, String email, String userName, String password){
-        this.firstName=firstName;
-        this.lastName=lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.incorrectLoginAttempts = 0;
     }
 
+    //Functional Methods
+
+    //Login
+    public User login(String userName, String password){
+
+        return null;
+    }
+
+    //reset-Password
+    public boolean resetPassword(String password){
+        return false;
+    }
+
+    //Generic Object methods
+
+    //First-Name
     public String getFirstName() {
         return firstName;
     }
@@ -29,6 +46,7 @@ public abstract class User {
         this.firstName = firstName;
     }
 
+    //LastName
     public String getLastName() {
         return lastName;
     }
@@ -37,6 +55,7 @@ public abstract class User {
         this.lastName = lastName;
     }
 
+    //Email
     public String getEmail() {
         return email;
     }
@@ -45,6 +64,25 @@ public abstract class User {
         this.email = email;
     }
 
+    //DOB
+    public Calendar getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(Calendar DOB) {
+        this.DOB = DOB;
+    }
+
+    //PostalCode
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    //userName
     public String getUserName() {
         return userName;
     }
@@ -53,6 +91,7 @@ public abstract class User {
         this.userName = userName;
     }
 
+    //ID
     public String getId() {
         return id;
     }
@@ -61,6 +100,7 @@ public abstract class User {
         this.id = id;
     }
 
+    //Password
     public String getPassword() {
         return password;
     }
@@ -69,6 +109,7 @@ public abstract class User {
         this.password = password;
     }
 
+    //Incorrect-Attempts
     public int getIncorrectLoginAttempts() {
         return incorrectLoginAttempts;
     }
