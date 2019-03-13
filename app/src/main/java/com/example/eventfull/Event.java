@@ -11,6 +11,7 @@ public class Event {
     //constructor
     public Event(String ID){
 
+
     }
 
     //Setters and Getters
