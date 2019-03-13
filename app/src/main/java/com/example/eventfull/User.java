@@ -1,9 +1,10 @@
 package com.example.eventfull;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public abstract class User {
+public abstract class User implements AllUsers {
     //Variables
     private String firstName,lastName,email,id,postalCode,userName,password;
     private int incorrectLoginAttempts;
@@ -22,7 +23,7 @@ public abstract class User {
         this.incorrectLoginAttempts = 0;
     }
 
-    //Functional Methods
+    //class Functions
 
     //Login
     public User login(String userName, String password){
@@ -35,8 +36,23 @@ public abstract class User {
         return false;
     }
 
-    //Generic Object methods
+    //Interface Functions
+    public ArrayList searchSports(){
+        ArrayList <String> boom = new ArrayList<String>();
+        return boom;
+    }
 
+    public ArrayList searchConcerts(){
+        ArrayList <String> boom = new ArrayList<String>();
+        return boom;
+    }
+
+    public ArrayList searchTheatres(){
+        ArrayList <String> boom = new ArrayList<String>();
+        return boom;
+    }
+
+    //Getters and setters
     //First-Name
     public String getFirstName() {
         return firstName;
