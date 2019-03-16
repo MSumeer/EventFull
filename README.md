@@ -1,1 +1,1 @@
-# EventFull
+#Simple nodejs API server
