@@ -1,0 +1,38 @@
+[
+	{
+		"type": "Admin",
+		"id": 0,
+		"firstName": "Admin",
+		"lastName": "Admin",
+		"email": "example@example.com",
+		"userName": "Admin",
+		"password": "pass"
+	},
+	{
+		"type": "member",
+		"id": 1,
+		"firstName": "userFirst",
+		"lastName": "userLast",
+		"email": "example:example.com",
+		"userName": "member",
+		"Password": "pass"
+	},
+	{
+		"type": "seasonTicketHolder",
+		"id": 2,
+		"firstName": "userFirst",
+		"lastName": "userLast",
+		"email": "example:example.com",
+		"userName": "SeasonTicketHolder",
+		"Password": "pass"
+	},
+	{
+		"type": "staff",
+		"id": 3,
+		"firstName": "staffFirst",
+		"lastName": "staffLast",
+		"email": "example:example.com",
+		"userName": "staff",
+		"Password": "pass"
+	}
+]
