@@ -4,6 +4,10 @@ public class AttendanceRecord {
 
     private int unattendedCount;
 
+    public AttendanceRecord(){
+        unattendedCount = 0;
+    }
+
     public static void incrementCount() {}
 
     public static void resetCount() {}

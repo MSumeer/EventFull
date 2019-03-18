@@ -6,15 +6,16 @@ import java.util.GregorianCalendar;
 
 public abstract class User implements AllUsers {
     //Variables
-    private String firstName,lastName,email,id,postalCode,userName,password;
-    private int incorrectLoginAttempts;
+    private String firstName,lastName,email,postalCode,userName,password;
+    private int incorrectLoginAttempts,id;
     private Calendar DOB = new GregorianCalendar();
 
     //Constructors
     User(){
 
     }
-    User(String firstName,String lastName, String email, String userName, String password){
+    User(int id,String firstName,String lastName, String email, String userName, String password){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -108,11 +109,11 @@ public abstract class User implements AllUsers {
     }
 
     //ID
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -5,24 +5,26 @@ import java.util.ArrayList;
 public class Member extends User {
 
 
-    private ArrayList <Integer> orderhistory = new ArrayList<>();
+    private ArrayList <Integer> orderHistory = new ArrayList<>();
 
 
     //constructor
-    public Member(){
-
-
-    }
-
-
-    public static void ContactStaff() {
+    public Member(int id,String firstName, String lastName, String email,String userName, String password){
+        super(id,firstName,lastName,email,userName,password);
 
     }
 
-    public void getOrderHistory(ArrayList<Integer> orderhistory) {
-        this.orderhistory = orderhistory;
+    public ArrayList<Integer> getOrderHistory() {
+        return orderHistory;
     }
 
+    public void setOrderHistory(ArrayList<Integer> orderHistory) {
+        this.orderHistory = orderHistory;
+    }
+
+    public static void contactStaff() {
+
+    }
 
     public static void viewHistory(){
 
@@ -36,7 +38,7 @@ public class Member extends User {
         return true;
     }
 
-    public boolean makeSeasonBooking(Event event){
+    public boolean seasonBooking(Event event){
         return true;
     }
 }

@@ -6,7 +6,7 @@
 		"lastName": "Admin",
 		"email": "example@example.com",
 		"userName": "Admin",
-		"password": "pass"
+		"Password": "pass"
 	},
 	{
 		"type": "member",

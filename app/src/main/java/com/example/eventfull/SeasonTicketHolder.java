@@ -3,8 +3,8 @@ package com.example.eventfull;
 public class SeasonTicketHolder extends Member {
 
     //constructor
-    public SeasonTicketHolder(){
-
+    public SeasonTicketHolder(int id,String firstName, String lastName, String email,String userName, String password){
+        super(id,firstName,lastName,email,userName,password);
 
 
     }
