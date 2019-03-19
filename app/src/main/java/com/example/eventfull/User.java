@@ -1,5 +1,10 @@
 package com.example.eventfull;
 
+import android.content.Context;
+import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -25,10 +30,14 @@ public abstract class User implements AllUsers {
     }
 
     //class Functions
-
     //Login
-    public User login(String userName, String password){
-
+    public static User login(String userName, String password, Context context,Registry reg, JSONArray jsa){
+        User user = reg.getUser(userName,context);
+        if(user == null){return null;}
+        else if((userName.equals(user.getUserName()))&&(password.equals(user.getPassword()))){
+            Toast.makeText(context,"Login Successful",Toast.LENGTH_LONG).show();
+            return user;
+        }
         return null;
     }
 

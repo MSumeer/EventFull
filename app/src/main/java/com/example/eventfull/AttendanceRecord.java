@@ -2,15 +2,15 @@ package com.example.eventfull;
 
 public class AttendanceRecord {
 
-    private int unattendedCount;
+    private int count;
 
     public AttendanceRecord(){
-        unattendedCount = 0;
+        count = 0;
     }
 
-    public static void incrementCount() {}
+    public void incrementCount() {count++;}
 
-    public static void resetCount() {}
+    public void resetCount() {count = 0;}
 
-    public int getCount(){return unattendedCount;}
+    public int getCount(){return count;}
 }
