@@ -9,8 +9,14 @@ public class Event {
     private boolean available;
 
     //constructor
-    public Event(String type, String location,String name,){
-
+    public Event(String type, String location,String name,ArrayList<Integer>price,int capacity,int ID, boolean available){
+        this.type = type;
+        this.location = location;
+        this.name = name;
+        this.price = price;
+        this.capacity = capacity;
+        this.ID = ID;
+        this.available = available;
 
     }
 

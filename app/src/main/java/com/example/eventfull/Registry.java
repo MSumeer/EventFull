@@ -8,10 +8,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Registry {
 
@@ -128,8 +133,12 @@ public class Registry {
         return user;
         }
 
-    public boolean addEventToDB(Event event){
-        return false;
+    public boolean addEventToDB(Event event,Context context){
+        File file = new File(context.getFilesDir()+"/Events.txt");
+        FileWriter fw = new FileWriter(file,true);
+        StringBuilder sb = new StringBuilder();
+        sb.append("\"")
+        fw.write();
     }
     public boolean RemoveEventDB(Event event){
         return false;
