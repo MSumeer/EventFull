@@ -9,10 +9,15 @@
         android:id="@+id/etFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
+        android:autofillHints="@string/firstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,10 +26,16 @@
         android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="@string/lastName"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/etFirstName"
+        android:autofillHints="@string/lastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
     <EditText
@@ -34,6 +45,7 @@
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
+        android:autofillHints="@string/Email"
         app:layout_constraintStart_toStartOf="@+id/etLastName"
         app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
@@ -44,6 +56,7 @@
         android:ems="10"
         android:hint="@string/userName"
         android:inputType="textPersonName"
+        android:autofillHints="@string/userName"
         app:layout_constraintEnd_toEndOf="@+id/etEmail"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
@@ -54,6 +67,7 @@
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
+        android:autofillHints="@string/Password"
         app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
@@ -62,10 +76,11 @@
         android:layout_width="213dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:text="Register"
+        android:text="@string/Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintVertical_bias="0.02" />
+
 </android.support.constraint.ConstraintLayout>
