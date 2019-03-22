@@ -24,14 +24,14 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.registeractivity);
 
         //Assigning text from the text boxes to variables
-        final EditText etFirstName = (EditText) findViewById(R.id.etFirstName);
-        final EditText etLastName = (EditText) findViewById(R.id.etLastName);
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText etFirstName = findViewById(R.id.etFirstName);
+        final EditText etLastName = findViewById(R.id.etLastName);
+        final EditText etEmail = findViewById(R.id.etEmail);
+        final EditText etUsername = findViewById(R.id.etUsername);
+        final EditText etPassword = findViewById(R.id.etPassword);
 
         //Assigning the register button to a variable
-        final Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        final Button btnRegister = findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener (new View.OnClickListener() {
             @Override
