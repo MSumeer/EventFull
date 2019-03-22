@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 
 public class RegisterActivity extends AppCompatActivity {
     @Override
@@ -45,17 +47,29 @@ public class RegisterActivity extends AppCompatActivity {
                 //Create a JSONObject to store values
                 try {
                     JSONObject obj = new JSONObject();
+                    obj.put("type","member");
+                    obj.put("id",0);
                     obj.put("firstName", firstName);
                     obj.put("lastName", lastName);
                     obj.put("email", email);
-                    obj.put("username", username);
-                    obj.put("password", password);
+                    obj.put("userName", username);
+                    obj.put("Password", password);
 
                     //Write JSONObject to file
                     File file = new File(getFilesDir()+"/Users.txt");
-                    FileWriter fw = new FileWriter(file,true);
-                    fw.write(obj.toString());
-                    fw.flush();
+                    RandomAccessFile raf = new RandomAccessFile(file,"rw");
+                    String line = "";
+                    StringBuilder sb = new StringBuilder();
+                    while((line=raf.readLine())!= null){
+                        if(line.trim().equals("}")){
+                            sb.append("},\n"+obj.toString(8)+"\n");
+                        }else{
+                            sb.append(line+"\n");
+                        }
+                    }
+                    raf.seek(0);
+                    raf.write(sb.toString().getBytes());
+
 
                     AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                     alertDialog.setTitle("Alert");
