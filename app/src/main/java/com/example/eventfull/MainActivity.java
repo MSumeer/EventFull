@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void loadFiles(){
         File users = getBaseContext().getFileStreamPath("Users.txt");
-        boolean a = false;
         if(!(users.exists())){
             InputStream is = null;
             try {
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
                 is.close();ois.close();br.close();
                 fos.close();
-                a = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }

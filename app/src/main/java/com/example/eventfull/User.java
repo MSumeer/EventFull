@@ -3,8 +3,6 @@ package com.example.eventfull;
 import android.content.Context;
 import android.widget.Toast;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

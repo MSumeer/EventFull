@@ -12,7 +12,7 @@ public class Staff extends User{
     }
 
     public boolean addEvent(String eventType, String venueName, String venueLocation, ArrayList<String> ticketPrice, int capacity){
-        return true;
+        Event event = new Event()
     }
 
     public static void rescheduleEvent(Event event){}

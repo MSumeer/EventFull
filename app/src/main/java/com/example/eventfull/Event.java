@@ -3,15 +3,23 @@ package com.example.eventfull;
 import java.util.ArrayList;
 
 public class Event {
-    private String type , ID, location , name;
+    private String type , location , name;
     private ArrayList <Integer> price = new ArrayList<Integer>();
-    private int capacity;
+    private int capacity,ID;
     private boolean available;
 
     //constructor
-    public Event(String ID){
+    public Event(String type, String location,String name,){
 
 
+    }
+
+    //Class Methods
+    public int increaseCapacity(int num){
+        return capacity+=num;
+    }
+    public int decreaseCapacity(int num){
+        return capacity-=num;
     }
 
     //Setters and Getters
@@ -25,11 +33,11 @@ public class Event {
     }
 
     //ID
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
