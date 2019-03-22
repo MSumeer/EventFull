@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="67dp"
         android:ems="10"
-        android:hint="@string/FirstName"
+        android:hint="@string/firstName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/LastName"
+        android:hint="@string/lastName"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/etFirstName"
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />

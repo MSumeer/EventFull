@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -51,10 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
                     obj.put("password", password);
 
                     //Write JSONObject to file
-
-                    FileWriter file = new FileWriter("users222.json");
-                    file.write(obj.toString());
-                    file.flush();
+                    File file = new File(getFilesDir()+"/Users.txt");
+                    FileWriter fw = new FileWriter(file,true);
+                    fw.write(obj.toString());
+                    fw.flush();
 
                     AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
                     alertDialog.setTitle("Alert");

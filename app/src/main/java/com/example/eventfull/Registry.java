@@ -134,11 +134,12 @@ public class Registry {
         }
 
     public boolean addEventToDB(Event event,Context context){
-        File file = new File(context.getFilesDir()+"/Events.txt");
+        /*File file = new File(context.getFilesDir()+"/Events.txt");
         FileWriter fw = new FileWriter(file,true);
         StringBuilder sb = new StringBuilder();
         sb.append("\"")
-        fw.write();
+        fw.write();*/
+        return false;
     }
     public boolean RemoveEventDB(Event event){
         return false;
