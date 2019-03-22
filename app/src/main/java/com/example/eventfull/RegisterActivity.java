@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     //Write JSONObject to file
 
-                    FileWriter file = new FileWriter("users.json");
+                    FileWriter file = new FileWriter("users222.json");
                     file.write(obj.toString());
                     file.flush();
 
