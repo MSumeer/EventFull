@@ -21,4 +21,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="DOB">DOB</string>
+    <string name="BillingAddress">Billing Address</string>
+    <string name="PostalCode">PostalCode</string>
 </resources>

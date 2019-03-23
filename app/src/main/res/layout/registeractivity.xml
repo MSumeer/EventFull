@@ -10,14 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="144dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:autofillHints="@string/firstName"
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
-        android:autofillHints="@string/firstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +37,17 @@
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
     <EditText
+        android:id="@+id/etDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/Email"
+        android:ems="10"
+        android:hint="@string/DOB"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etLastName"
+        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+
+    <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,8 +55,30 @@
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
         android:autofillHints="@string/Email"
-        app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        app:layout_constraintStart_toStartOf="@+id/etDOB"
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+
+    <EditText
+        android:id="@+id/etBillingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/BillingAddress"
+        android:ems="10"
+        android:hint="@string/BillingAddress"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+    <EditText
+        android:id="@+id/etPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/PostalCode"
+        android:ems="10"
+        android:hint="@string/PostalCode"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etBillingAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etBillingAddress" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -57,8 +88,8 @@
         android:hint="@string/userName"
         android:inputType="textPersonName"
         android:autofillHints="@string/userName"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintEnd_toEndOf="@+id/etPostalCode"
+        app:layout_constraintTop_toBottomOf="@+id/etPostalCode" />
 
     <EditText
         android:id="@+id/etPassword"

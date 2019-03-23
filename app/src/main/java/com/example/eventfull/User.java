@@ -4,27 +4,28 @@ import android.content.Context;
 import android.widget.Toast;
 import org.json.JSONArray;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 
 public abstract class User implements AllUsers {
     //Variables
-    private String firstName,lastName,email,postalCode,userName,password;
-    private int incorrectLoginAttempts,id;
-    private Calendar DOB = new GregorianCalendar();
-
+    private String firstName,lastName,DOB,email,billingAddress,postalCode,userName,password;
+    private int incorrectLoginAttempts = 0,id;
     //Constructors
     User(){
 
     }
-    User(int id,String firstName,String lastName, String email, String userName, String password){
+    User(int id,String firstName,String lastName,String DOB, String email,String billingAddress,String postalCode,
+         String userName, String password){
+
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.DOB = DOB;
+        this.email = email;
+        this.billingAddress = billingAddress;
+        this.postalCode = postalCode;
         this.userName = userName;
         this.password = password;
-        this.email = email;
-        this.incorrectLoginAttempts = 0;
     }
 
     //class Functions
@@ -89,11 +90,11 @@ public abstract class User implements AllUsers {
     }
 
     //DOB
-    public Calendar getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public void setDOB(Calendar DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
@@ -140,5 +141,14 @@ public abstract class User implements AllUsers {
 
     public void setIncorrectLoginAttempts(int incorrectLoginAttempts) {
         this.incorrectLoginAttempts = incorrectLoginAttempts;
+    }
+
+    //billingAddress
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 }
