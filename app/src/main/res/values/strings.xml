@@ -9,6 +9,11 @@
     <string name="Register">Register</string>
     <string name="ContinueAsGuest">Continue as Guest</string>
     <string name="title_activity_login2">Sign in</string>
+    <string name="EventName">Event name</string>
+    <string name="NumberOfTickets">Number of tickets</string>
+    <string name="Total">Total</string>
+    <string name="UpdatePrice">Update Price</string>
+    <string name="Book">Book</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -24,4 +29,5 @@
     <string name="DOB">DOB</string>
     <string name="BillingAddress">Billing Address</string>
     <string name="PostalCode">PostalCode</string>
+    <string name="title_activity_book_event">BookEventActivity</string>
 </resources>
