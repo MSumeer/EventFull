@@ -25,7 +25,16 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnMainLogin);
         Button btnRegister = findViewById(R.id.btnRegister);
         Button btnGuest = findViewById(R.id.btnGuest);
+        Button btnBook2 = findViewById(R.id.btnBook2);
 
+        btnBook2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Intent a = new Intent(MainActivity.this, BookEventActivity.class);
+                startActivity(a);
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
