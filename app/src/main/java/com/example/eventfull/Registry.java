@@ -77,7 +77,7 @@ public class Registry {
 
     //The read() method essentially reads the file Users.txt and return a JsonArray with the data needed
 
-    private JSONArray read(Context context,String fileName){
+    public JSONArray read(Context context,String fileName){
         //variables needed for reading the file
         FileInputStream fis;
         BufferedReader br;
@@ -160,25 +160,25 @@ public class Registry {
                     case "Admin":
                         user = new Admin(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("DOB"),jso.getString("email"),
+                                jso.getString("email"),
                                 jso.getString("userName"),jso.getString("password"));
                         break;
                     case "member":
                         user = new Member(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("DOB"),jso.getString("email"),
+                                jso.getString("email"),
                                 jso.getString("userName"),jso.getString("password"));
                         break;
                     case "seasonTicketHolder":
                         user = new SeasonTicketHolder(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("DOB"),jso.getString("email"),
+                                jso.getString("email"),
                                 jso.getString("userName"),jso.getString("password"));
                         break;
                     case "staff":
                         user = new Staff(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("DOB"),jso.getString("email"),
+                                jso.getString("email"),
                                 jso.getString("userName"),jso.getString("password"));
                         break;
                 }

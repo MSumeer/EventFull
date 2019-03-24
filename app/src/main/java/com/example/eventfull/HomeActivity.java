@@ -1,7 +1,13 @@
 package com.example.eventfull;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+import android.widget.SearchView;
+
+import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -19,6 +25,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.homeactivity);
         String userName = load();
         user = Registry.getInstance().getUser(userName,getApplicationContext());
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //doMySearch(query);
+        }
+
     }
     public String load(){
         FileInputStream fis;
@@ -38,5 +50,15 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return userName;
+    }
+
+    public void searchmethod() {
+
+        JSONArray search= Registry.getInstance().read(getApplicationContext(), "Events.txt");
+        EditText what = findViewById(R.id.what);
+        EditText where = findViewById(R.id.where);
+        EditText When = findViewById(R.id.when);
+
+
     }
 }

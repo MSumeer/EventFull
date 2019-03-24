@@ -9,8 +9,8 @@ public class Member extends User {
 
 
     //constructor
-    public Member(int id,String firstName, String lastName, String DOB,String email,String userName, String password){
-        super(id,firstName,lastName,DOB,email,userName,password);
+    public Member(int id,String firstName, String lastName,String email,String userName, String password){
+        super(id,firstName,lastName,email,userName,password);
 
     }
 

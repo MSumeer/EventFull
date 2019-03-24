@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Staff extends User{
 
     //constructor
-    public Staff(int id,String firstName, String lastName, String DOB,String email,String userName, String password){
-        super(id,firstName,lastName,DOB,email,userName,password);
+    public Staff(int id,String firstName, String lastName, String email,String userName, String password){
+        super(id,firstName,lastName,email,userName,password);
 
 
     }

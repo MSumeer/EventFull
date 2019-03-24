@@ -2,6 +2,7 @@ package com.example.eventfull;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,71 +44,16 @@ public class BookEventActivity extends AppCompatActivity {
             }
         });
 
+
+
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String eventName = etEventName.getText().toString().trim();
-                String numberOfTickets = etNumberOfTickets.getText().toString().trim();
-
-                //Create a JSONObject to store values
-                try {
-                    JSONObject obj = new JSONObject();
-                    obj.put("Event",eventName);
-                    obj.put("Tickets",numberOfTickets);
-
-                    //Write JSONObject to file
-                    File file = new File(getFilesDir()+"/Bookings.txt");
-                    RandomAccessFile raf = new RandomAccessFile(file,"rw");
-                    String line = "";
-                    StringBuilder sb = new StringBuilder();
-                    while((line=raf.readLine())!= null){
-                        if(line.trim().equals("}")){
-                            sb.append("},\n"+obj.toString(8)+"\n");
-                        }else{
-                            sb.append(line+"\n");
-                        }
-                    }
-                    raf.seek(0);
-                    raf.write(sb.toString().getBytes());
-
-
-                    AlertDialog alertDialog = new AlertDialog.Builder(BookEventActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage(eventName+numberOfTickets);
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
-                catch(JSONException e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(BookEventActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage("ErrorJSON");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
-                catch(IOException e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(BookEventActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage("ErrorIO");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
-
+            public void onClick(View v) {
+                Intent a = new Intent(BookEventActivity.this,PaymentActivity.class);
+                startActivity(a);
             }
         });
+
+
     }
 }

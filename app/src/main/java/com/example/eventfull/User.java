@@ -14,12 +14,11 @@ public abstract class User implements AllUsers {
     User(){
 
     }
-    User(int id,String firstName,String lastName,String DOB, String email,String userName, String password){
+    User(int id,String firstName,String lastName, String email,String userName, String password){
 
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.DOB = DOB;
         this.email = email;
         this.userName = userName;
         this.password = password;
