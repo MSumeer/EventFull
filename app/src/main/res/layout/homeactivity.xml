@@ -97,4 +97,28 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView4"
         app:layout_constraintVertical_bias="0.935" />
 
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="344dp"
+        android:layout_height="150dp"
+        app:srcCompat="@android:color/background_light"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="214dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="344dp"
+        android:layout_height="150dp"
+        app:srcCompat="@android:color/background_light"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="388dp" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="344dp"
+        android:layout_height="150dp"
+        app:srcCompat="@android:color/background_light"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="565dp" />
+
 </android.support.constraint.ConstraintLayout>
