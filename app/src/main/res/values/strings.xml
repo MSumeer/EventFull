@@ -36,4 +36,6 @@
     <string name="where">Where?</string>
     <string name="todo">TODO</string>
     <string name="search">Search</string>
+    <string name="register">Register</string>
+    <string name="book">Book</string>
 </resources>
