@@ -10,100 +10,123 @@
         android:id="@+id/textView"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="163dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="cursive"
         android:text="@string/eventfull"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etFirstName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734" />
 
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="@string/firstName"
+
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
-
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/etLastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="@string/lastName"
         android:ems="10"
         android:hint="@string/lastName"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etDOB"
-        app:layout_constraintStart_toStartOf="@+id/etFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etDOB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="@string/DOB"
         android:ems="10"
         android:hint="@string/DOB"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/etEmail"
-        app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="@string/Email"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/etUsername"
-        app:layout_constraintStart_toStartOf="@+id/etDOB"
-        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="@string/userName"
         android:ems="10"
         android:hint="@string/userName"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:autofillHints="@string/Password"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/etUsername"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="213dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="173dp"
+        android:layout_width="218dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="124dp"
         android:text="@string/Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

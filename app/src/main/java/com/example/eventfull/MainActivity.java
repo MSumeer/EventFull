@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,29 +32,28 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                Intent a = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(a);
+                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login);
             }
         });
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(a);
+                Intent register = new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(register);
             }
         });
         btnGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent a = new Intent(MainActivity.this,GuestActivity.class)
+                //Intent main = new Intent(MainActivity.this,GuestActivity.class)
             }
         });
 
     }
     public void loadFile(String fileName){
-        File users = getBaseContext().getFileStreamPath("Users.txt");
-        if(!(users.exists())){
+        File file = new File(getFilesDir()+"/"+fileName);
+        if(!(file.exists())){
             InputStream is = null;
             try {
 
@@ -63,16 +63,15 @@ public class MainActivity extends AppCompatActivity {
                 BufferedReader br = new BufferedReader(ois);
                 String line = "";
                 StringBuilder sb = new StringBuilder();
+
                 while((line = br.readLine())!=null){
                     sb.append(line).append("\n");
                 }
 
                 FileOutputStream fos = openFileOutput(fileName,MODE_PRIVATE);
-
                 fos.write(sb.toString().getBytes());
 
-                is.close();ois.close();br.close();
-                fos.close();
+                is.close();ois.close();br.close();fos.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

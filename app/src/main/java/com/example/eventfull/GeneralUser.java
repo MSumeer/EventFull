@@ -2,7 +2,7 @@ package com.example.eventfull;
 
 public class GeneralUser {
 
-    public boolean register(String firstName, String lastName, String email, String userName, String password){
+    public boolean register(String firstName, String lastName, String email, String DOB,String userName, String password){
         return true;
     }
 

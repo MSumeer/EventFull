@@ -1,12 +1,13 @@
 [
 	{
-		"type": "Admin",
+		"type": "admin",
 		"id": 0,
 		"firstName": "Admin",
 		"lastName": "Admin",
 		"email": "example@example.com",
+		"DOB": "03/09/1987",
 		"userName": "Admin",
-		"Password": "pass"
+		"password": "pass"
 	},
 	{
 		"type": "member",
@@ -14,8 +15,9 @@
 		"firstName": "userFirst",
 		"lastName": "userLast",
 		"email": "example:example.com",
+		"DOB": "28/12/1993",
 		"userName": "member",
-		"Password": "pass"
+		"password": "pass"
 	},
 	{
 		"type": "seasonTicketHolder",
@@ -23,8 +25,9 @@
 		"firstName": "userFirst",
 		"lastName": "userLast",
 		"email": "example:example.com",
+		"DOB": "25/02/1989",
 		"userName": "SeasonTicketHolder",
-		"Password": "pass"
+		"password": "pass"
 	},
 	{
 		"type": "staff",
@@ -32,7 +35,8 @@
 		"firstName": "staffFirst",
 		"lastName": "staffLast",
 		"email": "example:example.com",
+		"DOB": "08/04/1995",
 		"userName": "staff",
-		"Password": "pass"
+		"password": "pass"
 	}
 ]
