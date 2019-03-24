@@ -20,8 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText etLastName = findViewById(R.id.etLastName);
         final EditText etDOB = findViewById(R.id.etDOB);
         final EditText etEmail = findViewById(R.id.etEmail);
-        final EditText etBillingAddress = findViewById(R.id.etBillingAddress);
-        final EditText etPostalCode = findViewById(R.id.etPostalCode);
+
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
 
@@ -37,8 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String lastName = etLastName.getText().toString().trim();
                 String DOB = etDOB.getText().toString().trim();
                 String email = etEmail.getText().toString().trim();
-                String billingAddress = etBillingAddress.getText().toString().trim();
-                String postalCode = etPostalCode.getText().toString().trim();
                 String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 User user = new Member(1,firstName,lastName,DOB,email,username,password);
