@@ -27,4 +27,5 @@
         completions."
     </string>
     <string name="title_activity_book_event">BookEventActivity</string>
+    <string name="eventfull">EventFull</string>
 </resources>
