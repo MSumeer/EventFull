@@ -55,9 +55,9 @@ public class HomeActivity extends AppCompatActivity {
     public void searchmethod() {
 
         JSONArray search= Registry.getInstance().read(getApplicationContext(), "Events.txt");
-        EditText what = findViewById(R.id.what);
-        EditText where = findViewById(R.id.where);
-        EditText When = findViewById(R.id.when);
+        //EditText what = findViewById(R.id.what);
+        //EditText where = findViewById(R.id.where);
+        //EditText When = findViewById(R.id.when);
 
 
     }

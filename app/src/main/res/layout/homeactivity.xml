@@ -19,54 +19,28 @@
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView4" />
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/where"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="341dp"
+        android:layout_height="42dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/where"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/when"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView4" />
-
-    <SearchView
-        android:id="@+id/searchView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="627dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/what" />
-
-    <SearchView
-        android:id="@+id/searchView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/when"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/what"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="39dp"
         android:layout_marginTop="7dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/what_are_you_looking_for"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/searchView3"
         app:layout_constraintEnd_toEndOf="@+id/where"
         app:layout_constraintStart_toStartOf="@+id/where"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,8 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView4"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
