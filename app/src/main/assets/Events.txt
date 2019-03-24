@@ -1,12 +1,13 @@
 [
 	{
+		"ID": 1,
 		"type": "Football",
+		"venueName": "London Stadium",
+		"capacity": 57000,
 		"location": "London Stratford",
 		"Date": "30/03/2019",
 		"name": "West Ham vs Everton",
 		"price": ["£35", "£45", "£50", "£55", "£65"],
-		"capacity": 57000,
-		"ID": 01,
-		"available": true
+		"ticketsRemaining": 57000
 	}
 ]

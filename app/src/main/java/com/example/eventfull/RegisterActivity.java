@@ -5,17 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 
 public class RegisterActivity extends AppCompatActivity {
     @Override
@@ -26,7 +18,10 @@ public class RegisterActivity extends AppCompatActivity {
         //Assigning text from the text boxes to variables
         final EditText etFirstName = findViewById(R.id.etFirstName);
         final EditText etLastName = findViewById(R.id.etLastName);
+        final EditText etDOB = findViewById(R.id.etDOB);
         final EditText etEmail = findViewById(R.id.etEmail);
+        final EditText etBillingAddress = findViewById(R.id.etBillingAddress);
+        final EditText etPostalCode = findViewById(R.id.etPostalCode);
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
 
@@ -40,72 +35,19 @@ public class RegisterActivity extends AppCompatActivity {
                 //Assign text from text boxes to variables
                 String firstName = etFirstName.getText().toString().trim();
                 String lastName = etLastName.getText().toString().trim();
+                String DOB = etDOB.getText().toString().trim();
                 String email = etEmail.getText().toString().trim();
+                String billingAddress = etBillingAddress.getText().toString().trim();
+                String postalCode = etPostalCode.getText().toString().trim();
                 String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-
-                //Create a JSONObject to store values
-                try {
-                    JSONObject obj = new JSONObject();
-                    obj.put("type","member");
-                    obj.put("id",0);
-                    obj.put("firstName", firstName);
-                    obj.put("lastName", lastName);
-                    obj.put("email", email);
-                    obj.put("userName", username);
-                    obj.put("Password", password);
-
-                    //Write JSONObject to file
-                    File file = new File(getFilesDir()+"/Users.txt");
-                    RandomAccessFile raf = new RandomAccessFile(file,"rw");
-                    String line = "";
-                    StringBuilder sb = new StringBuilder();
-                    while((line=raf.readLine())!= null){
-                        if(line.trim().equals("}")){
-                            sb.append("},\n"+obj.toString(8)+"\n");
-                        }else{
-                            sb.append(line+"\n");
-                        }
-                    }
-                    raf.seek(0);
-                    raf.write(sb.toString().getBytes());
-
-
-                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage(firstName+lastName+email+username+password);
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+                User user = new Member(1,firstName,lastName,DOB,email,username,password);
+                if(Registry.getInstance().addNewUser(user,getApplicationContext())){
+                    Toast.makeText(getApplicationContext(),"Registered",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Registration Failed",Toast.LENGTH_LONG).show();
                 }
-                catch(JSONException e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage("ErrorJSON");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
-                catch(IOException e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(RegisterActivity.this).create();
-                    alertDialog.setTitle("Alert");
-                    alertDialog.setMessage("ErrorIO");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
+
             }
         });
 

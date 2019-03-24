@@ -1,22 +1,51 @@
 package com.example.eventfull;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class Event {
-    private String type , location , name;
-    private ArrayList <Integer> price = new ArrayList<Integer>();
-    private int capacity,ID;
+    private String type , location ,venueName,date, name;
+    private ArrayList <Integer> price;
+    private int capacity,ID,ticketsRemaining;
     private boolean available;
 
     //constructor
-    public Event(String type, String location,String name,ArrayList<Integer>price,int capacity,int ID, boolean available){
+    public Event(String type, String location, String venueName, String date,
+                 String name, JSONArray jsa, int capacity, int ID,
+                 int ticketsRemaining){
         this.type = type;
         this.location = location;
+        this.venueName = venueName;
+        this.date = date;
         this.name = name;
-        this.price = price;
         this.capacity = capacity;
         this.ID = ID;
-        this.available = available;
+        this.ticketsRemaining = ticketsRemaining;
+        price = new ArrayList<Integer>();
+        for(int i = 0;i<jsa.length();i++){
+            try {
+                price.add(jsa.getInt(i));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public Event(String type, String location, String venueName, String date,
+                 String name, ArrayList <Integer> price, int capacity, int ID,
+                 int ticketsRemaining){
+        this.type = type;
+        this.location = location;
+        this.venueName = venueName;
+        this.date = date;
+        this.name = name;
+        this.capacity = capacity;
+        this.ID = ID;
+        this.ticketsRemaining = ticketsRemaining;
+        this.price = price;
 
     }
 
@@ -90,5 +119,32 @@ public class Event {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    //TicketsRemaining
+    public int getTicketsRemaining() {
+        return ticketsRemaining;
+    }
+
+    public void setTicketsRemaining(int ticketsRemaining) {
+        this.ticketsRemaining = ticketsRemaining;
+    }
+
+    //VenueName
+    public String getVenueName() {
+        return venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    //Date
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

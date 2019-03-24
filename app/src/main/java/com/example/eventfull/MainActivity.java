@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadFiles();
+        loadFile("Users.txt");
+        loadFile("Events.txt");
 
         Button btnLogin = findViewById(R.id.btnMainLogin);
         Button btnRegister = findViewById(R.id.btnRegister);
@@ -58,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void loadFiles(){
+    public void loadFile(String fileName){
         File users = getBaseContext().getFileStreamPath("Users.txt");
         if(!(users.exists())){
             InputStream is = null;
             try {
 
-                is = getAssets().open("Users.txt");
+                is = getAssets().open(fileName);
 
                 InputStreamReader ois = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(ois);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     sb.append(line).append("\n");
                 }
 
-                FileOutputStream fos = openFileOutput("Users.txt",MODE_PRIVATE);
+                FileOutputStream fos = openFileOutput(fileName,MODE_PRIVATE);
 
                 fos.write(sb.toString().getBytes());
 
