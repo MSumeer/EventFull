@@ -1,116 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bluebackground">
 
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="44dp"
         android:autofillHints="@string/firstName"
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:autofillHints="@string/lastName"
         android:ems="10"
         android:hint="@string/lastName"
         android:inputType="textPersonName"
-        android:autofillHints="@string/lastName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etFirstName"
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
-
-    <EditText
-        android:id="@+id/etDOB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/DOB"
-        android:inputType="textEmailAddress"
-        android:autofillHints="@string/Email"
-        app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/Email"
-        android:inputType="textEmailAddress"
         android:autofillHints="@string/Email"
-        app:layout_constraintStart_toStartOf="@+id/etDOB"
-        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
-
-    <EditText
-        android:id="@+id/etBillingAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/BillingAddress"
-        android:inputType="textEmailAddress"
-        android:autofillHints="@string/BillingAddress"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-    <EditText
-        android:id="@+id/etPostalCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
-        android:autofillHints="@string/PostalCode"
+        app:layout_constraintBottom_toTopOf="@+id/etUsername"
         app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/userName"
         android:ems="10"
         android:hint="@string/userName"
         android:inputType="textPersonName"
-        android:autofillHints="@string/userName"
-        app:layout_constraintEnd_toEndOf="@+id/etBillingAddress"
-        app:layout_constraintTop_toBottomOf="@+id/etBillingAddress" />
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:autofillHints="@string/Password"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        android:autofillHints="@string/Password"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="213dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="173dp"
         android:text="@string/Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="31dp"
+        android:fontFamily="cursive"
+        android:text="@string/eventfull"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etFirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
