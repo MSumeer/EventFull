@@ -41,9 +41,10 @@ public class LoginActivity extends AppCompatActivity {
     //login method verifies the username and password from jsonArray
     public void login() {
 
+
         User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext(), Registry.getInstance(), jsa);
         if (user == null) {
-            Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_LONG).show();
         } else {
             try {
                 FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);

@@ -28,7 +28,9 @@ public abstract class User implements AllUsers {
     //Login
     public static User login(String userName, String password, Context context,Registry reg, JSONArray jsa){
         User user = reg.getUser(userName,context);
-        if(user == null){return null;}
+        if(user == null){
+            Toast.makeText(context,"null",Toast.LENGTH_LONG).show();
+            return null;}
         else if((userName.equals(user.getUserName()))&&(password.equals(user.getPassword()))){
             Toast.makeText(context,"Login Successful",Toast.LENGTH_LONG).show();
             return user;

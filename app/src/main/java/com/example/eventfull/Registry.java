@@ -158,7 +158,7 @@ public class Registry {
                     default:
                         Toast.makeText(context, "error", Toast.LENGTH_LONG).show();
                     case "Admin":
-                        user = new Admin(Integer.parseInt(jso.getString("id")),
+                        user = new Admin(jso.getInt("id"),
                                 jso.getString("firstName"), jso.getString("lastName"),
                                 jso.getString("email"),
                                 jso.getString("userName"),jso.getString("password"));
