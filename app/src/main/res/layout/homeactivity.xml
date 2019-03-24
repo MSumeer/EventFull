@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bluebackground">
@@ -11,26 +12,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="591dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/when"
         android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView4" />
 
     <EditText
         android:id="@+id/where"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/where"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/when"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView4"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView4" />
 
     <SearchView
         android:id="@+id/searchView3"
@@ -39,6 +42,7 @@
         android:layout_marginBottom="627dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/what" />
 
@@ -46,8 +50,8 @@
         android:id="@+id/searchView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/where"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/when"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,14 +72,29 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="52dp"
+        android:layout_width="58dp"
         android:layout_height="0dp"
         android:layout_marginBottom="579dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/when"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/where"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="523dp"
+        android:text="@string/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView4"
+        app:layout_constraintVertical_bias="0.935" />
 
 </android.support.constraint.ConstraintLayout>
