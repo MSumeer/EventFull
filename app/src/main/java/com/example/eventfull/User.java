@@ -3,6 +3,9 @@ package com.example.eventfull;
 import android.content.Context;
 import android.widget.Toast;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 
@@ -14,20 +17,32 @@ public abstract class User implements AllUsers {
     User(){
 
     }
-    User(int id,String firstName,String lastName, String email,String userName, String password){
+    User(String firstName,String lastName, String email,String DOB,String userName, String password,Context context){
+        try {
+            JSONArray jsa = Registry.getInstance().read(context, "Users.txt");
+            JSONObject jso = Registry.getInstance().search(userName,jsa);
+            if(jso == null){
+                jso = jsa.getJSONObject(jsa.length()-1);
+                this.id = jso.getInt("id");
+                this.id++;
+            }
+            this.id = jso.getInt("id");
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.DOB = DOB;
+            this.userName = userName;
+            this.password = password;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.userName = userName;
-        this.password = password;
     }
 
     //class Functions
     //Login
-    public static User login(String userName, String password, Context context,Registry reg, JSONArray jsa){
-        User user = reg.getUser(userName,context);
+    public static User login(String userName, String password, Context context){
+        User user = Registry.getInstance().getUser(userName,context);
         if(user == null){
             Toast.makeText(context,"null",Toast.LENGTH_LONG).show();
             return null;}
