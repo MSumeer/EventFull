@@ -9,59 +9,52 @@
 
     <Button
         android:id="@+id/btnMainLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/Login"
-        app:layout_constraintStart_toStartOf="@+id/btnBook2"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/btnBook2" />
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMainLogin"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintBottom_toTopOf="@+id/btnGuest"
+        app:layout_constraintEnd_toEndOf="@+id/btnGuest"
+        app:layout_constraintStart_toStartOf="@+id/btnGuest"
+        app:layout_constraintTop_toBottomOf="@+id/btnMainLogin" />
 
     <Button
         android:id="@+id/btnGuest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="184dp"
         android:text="@string/ContinueAsGuest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     <Button
         android:id="@+id/btnBook2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/Book"
-        app:layout_constraintStart_toStartOf="@+id/btnRegister"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnMainLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnMainLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnMainLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginBottom="29dp"
         android:fontFamily="cursive"
         android:text="@string/eventfull"
         android:textSize="60sp"
@@ -69,7 +62,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnBook2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
