@@ -10,11 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="44dp"
         android:autofillHints="@string/firstName"
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etLastName"
+        app:layout_constraintBottom_toTopOf="@+id/etEmail"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -26,7 +27,6 @@
         android:ems="10"
         android:hint="@string/lastName"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etEmail"
         app:layout_constraintStart_toStartOf="@+id/etFirstName"
         app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
@@ -40,7 +40,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/etUsername"
         app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -58,7 +58,7 @@
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="9dp"
         android:autofillHints="@string/Password"
         android:ems="10"
         android:hint="@string/Password"
@@ -71,7 +71,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="213dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="173dp"
         android:text="@string/Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,15 +82,14 @@
         android:id="@+id/textView"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="31dp"
         android:fontFamily="cursive"
         android:text="@string/eventfull"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etFirstName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
