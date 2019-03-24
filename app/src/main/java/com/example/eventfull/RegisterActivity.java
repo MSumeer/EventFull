@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String postalCode = etPostalCode.getText().toString().trim();
                 String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-                User user = new Member(1,firstName,lastName,DOB,email,billingAddress,postalCode,username,password);
+                User user = new Member(1,firstName,lastName,DOB,email,username,password);
                 if(Registry.getInstance().addNewUser(user,getApplicationContext())){
                     Toast.makeText(getApplicationContext(),"Registered",Toast.LENGTH_LONG).show();
                 }else{

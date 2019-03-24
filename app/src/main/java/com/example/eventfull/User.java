@@ -8,22 +8,19 @@ import java.util.ArrayList;
 
 public abstract class User implements AllUsers {
     //Variables
-    private String firstName,lastName,DOB,email,billingAddress,postalCode,userName,password;
+    private String firstName,lastName,DOB,email,userName,password;
     private int incorrectLoginAttempts = 0,id;
     //Constructors
     User(){
 
     }
-    User(int id,String firstName,String lastName,String DOB, String email,String billingAddress,String postalCode,
-         String userName, String password){
+    User(int id,String firstName,String lastName,String DOB, String email,String userName, String password){
 
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
         this.email = email;
-        this.billingAddress = billingAddress;
-        this.postalCode = postalCode;
         this.userName = userName;
         this.password = password;
     }
@@ -98,15 +95,6 @@ public abstract class User implements AllUsers {
         this.DOB = DOB;
     }
 
-    //PostalCode
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
     //userName
     public String getUserName() {
         return userName;
@@ -141,14 +129,5 @@ public abstract class User implements AllUsers {
 
     public void setIncorrectLoginAttempts(int incorrectLoginAttempts) {
         this.incorrectLoginAttempts = incorrectLoginAttempts;
-    }
-
-    //billingAddress
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
     }
 }

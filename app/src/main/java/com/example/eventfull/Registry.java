@@ -43,8 +43,6 @@ public class Registry {
             obj.put("lastName", user.getLastName());
             obj.put("DOB",user.getDOB());
             obj.put("email", user.getEmail());
-            obj.put("billingAddress",user.getBillingAddress());
-            obj.put("postalCode",user.getPostalCode());
             obj.put("userName", user.getUserName());
             obj.put("password", user.getPassword());
 
@@ -163,29 +161,25 @@ public class Registry {
                         user = new Admin(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
                                 jso.getString("DOB"),jso.getString("email"),
-                                jso.getString("userName"),jso.getString("billingAddress"),
-                                jso.getString("postalCode"),jso.getString("password"));
+                                jso.getString("userName"),jso.getString("password"));
                         break;
                     case "member":
                         user = new Member(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
                                 jso.getString("DOB"),jso.getString("email"),
-                                jso.getString("userName"),jso.getString("billingAddress"),
-                                jso.getString("postalCode"),jso.getString("password"));
+                                jso.getString("userName"),jso.getString("password"));
                         break;
                     case "seasonTicketHolder":
                         user = new SeasonTicketHolder(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
                                 jso.getString("DOB"),jso.getString("email"),
-                                jso.getString("userName"),jso.getString("billingAddress"),
-                                jso.getString("postalCode"),jso.getString("password"));
+                                jso.getString("userName"),jso.getString("password"));
                         break;
                     case "staff":
                         user = new Staff(Integer.parseInt(jso.getString("id")),
                                 jso.getString("firstName"), jso.getString("lastName"),
                                 jso.getString("DOB"),jso.getString("email"),
-                                jso.getString("userName"),jso.getString("billingAddress"),
-                                jso.getString("postalCode"),jso.getString("password"));
+                                jso.getString("userName"),jso.getString("password"));
                         break;
                 }
             }

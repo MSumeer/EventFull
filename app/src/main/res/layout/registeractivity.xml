@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="8dp"
         android:autofillHints="@string/firstName"
         android:ems="10"
@@ -40,10 +40,10 @@
         android:id="@+id/etDOB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/Email"
         android:ems="10"
         android:hint="@string/DOB"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
+        android:autofillHints="@string/Email"
         app:layout_constraintStart_toStartOf="@+id/etLastName"
         app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
@@ -62,23 +62,22 @@
         android:id="@+id/etBillingAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/BillingAddress"
         android:ems="10"
         android:hint="@string/BillingAddress"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
+        android:autofillHints="@string/BillingAddress"
         app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-
     <EditText
         android:id="@+id/etPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/PostalCode"
         android:ems="10"
-        android:hint="@string/PostalCode"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/etBillingAddress"
-        app:layout_constraintTop_toBottomOf="@+id/etBillingAddress" />
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="@string/PostalCode"
+        app:layout_constraintStart_toStartOf="@+id/etLastName"
+        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -88,8 +87,8 @@
         android:hint="@string/userName"
         android:inputType="textPersonName"
         android:autofillHints="@string/userName"
-        app:layout_constraintEnd_toEndOf="@+id/etPostalCode"
-        app:layout_constraintTop_toBottomOf="@+id/etPostalCode" />
+        app:layout_constraintEnd_toEndOf="@+id/etBillingAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etBillingAddress" />
 
     <EditText
         android:id="@+id/etPassword"

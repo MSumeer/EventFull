@@ -3,8 +3,8 @@ package com.example.eventfull;
 public class Admin extends User {
 
     //constructor
-    public Admin(int id,String firstName, String lastName, String DOB,String email,String billingAddress,String postalCode,String userName, String password){
-        super(id,firstName,lastName,DOB,email,billingAddress,postalCode,userName,password);
+    public Admin(int id,String firstName, String lastName, String DOB,String email,String userName, String password){
+        super(id,firstName,lastName,DOB,email,userName,password);
     }
 
     public static void contactStaff(){}
