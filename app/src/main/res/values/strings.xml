@@ -38,4 +38,15 @@
     <string name="search">Search</string>
     <string name="register">Register</string>
     <string name="book">Book</string>
+    <string name="enter_event_type">Enter Event Type</string>
+    <string name="enter_id">Enter ID</string>
+    <string name="enter_venue_name">Enter Venue Name</string>
+    <string name="enter_capacity">Enter Capacity</string>
+    <string name="enter_tickets_remaining">Enter Tickets Remaining</string>
+    <string name="enter_price">Enter Price</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="add">Add</string>
+    <string name="add_event">Add Event</string>
 </resources>
