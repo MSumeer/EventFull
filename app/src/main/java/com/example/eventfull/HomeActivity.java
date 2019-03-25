@@ -4,7 +4,12 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -23,9 +28,7 @@ import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity {
-    String[] data;
-    SearchView searchView;
-    ListView listView;
+    ArrayAdapter<String> arrayAdapter;
     User user = null;
     //onCreate() method invoked once the application starts
     @Override
@@ -34,29 +37,41 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.homeactivity);
         String userName = load();
         user = Registry.getInstance().getUser(userName, getApplicationContext());
-        Intent intent = getIntent();
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            //doMySearch(query);
-        }
-
         JSONArray read = Registry.getInstance().read(getApplicationContext(), "Events.txt");
-
+        final EditText theFilter = (EditText) findViewById(R.id.what);
         try {
             ArrayList<String> items = new ArrayList<String>();
             for (int i = 0; i < read.length(); i++) {
                 JSONObject line = read.getJSONObject(i);
-                String match = line.optString("name");
-                items.add(match);
+                String name = line.optString("name");
+                items.add(name);
             }
             ListView mylistview = findViewById(R.id.eventList);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+             arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
             mylistview.setAdapter(arrayAdapter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        theFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (HomeActivity.this).arrayAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
+
 
     public String load(){
         FileInputStream fis;
