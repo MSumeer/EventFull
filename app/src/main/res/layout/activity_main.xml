@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/btnMainLogin"
         android:layout_width="120dp"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="304dp"
         android:text="@string/Login"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:text="@string/Register"
         app:layout_constraintBottom_toTopOf="@+id/btnGuest"
         app:layout_constraintEnd_toEndOf="@+id/btnGuest"
@@ -30,7 +30,7 @@
     <Button
         android:id="@+id/btnGuest"
         android:layout_width="120dp"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="184dp"
         android:text="@string/ContinueAsGuest"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,8 +41,8 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="224dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="32dp"
         android:fontFamily="cursive"
         android:text="@string/eventfull"
@@ -50,8 +50,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnMainLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
