@@ -56,4 +56,6 @@
     <string name="where">Where?</string>
     <string name="what">What?</string>
     <string name="searchButton">Search</string>
+    <string name="AdultPrice">Adult Price : 10,20,30</string>
+    <string name="ChildPrice">Child Price : 10,20,30</string>
 </resources>

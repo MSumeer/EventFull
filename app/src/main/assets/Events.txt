@@ -7,7 +7,8 @@
 		"location": "London Stratford",
 		"Date": "30/03/2019",
 		"name": "West Ham vs Everton",
-		"price": ["£35", "£45", "£50", "£55", "£65"],
+		"childPrice": ["10", "12", "15"],
+		"adultPrice": ["20", "25", "40"],
 		"ticketsRemaining": 57000
 	}
 ]

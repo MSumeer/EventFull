@@ -1,7 +1,6 @@
 package com.example.eventfull;
 
 import android.content.Context;
-import android.util.JsonReader;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -214,7 +213,8 @@ public class Registry {
             jso.put("location",event.getLocation());
             jso.put("Date",event.getDate());
             jso.put("name",event.getName());
-            jso.put("priceRange",event.getPriceRange());
+            jso.put("child price",event.getChildPrice());
+            jso.put("adult price",event.getAdultPrice());
             jso.put("ticketsRemaining",event.getTicketsRemaining());
             String line;
             while((line =raf.readLine())!=null){
@@ -224,10 +224,15 @@ public class Registry {
                     sb.append(line+"\n");
                 }
             }
+            raf.seek(0);
+            raf.write(sb.toString().getBytes());
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+
         } catch (JSONException e) {
             e.printStackTrace();
+
         }
 
         return false;
@@ -273,8 +278,8 @@ public class Registry {
                 event = new Event(jso.getInt("ID"),jso.getString("type"),
                         jso.getString("location"),jso.getString("venueName"),
                         jso.getString("Date"),jso.getString("name"),
-                        jso.getString("priceRange"),jso.getInt("capacity"),
-                        jso.getInt("ticketsRemaining"));
+                        jso.getInt("capacity"), jso.getInt("ticketsRemaining"),
+                        jso.getJSONArray("childPrice"),jso.getJSONArray("adultPrice"));
             }
 
         } catch (FileNotFoundException e) {
