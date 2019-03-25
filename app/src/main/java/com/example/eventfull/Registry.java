@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 public class Registry {
 
@@ -51,6 +52,8 @@ public class Registry {
             obj.put("DOB",user.getDOB());
             obj.put("userName", user.getUserName());
             obj.put("password", user.getPassword());
+            ArrayList<Integer> a = new ArrayList<Integer>()
+            obj.put("tickets",a);
 
             //Write JSONObject to file
             File file = new File(context.getFilesDir()+"/Users.txt");
@@ -305,6 +308,18 @@ public class Registry {
             }
         }
         return null;
+    }
+    public boolean addTicketDB(Ticket ticket,Context context,User user){
+        try{
+            JSONArray jsa = read(context,"Users.txt");
+            JSONObject jso = search(user.getUserName(),jsa);
+            JSONArray ticketsJsa = jso.getJSONArray("tickets");
+            for(int i = 0;i<ticketsJsa.length();i++){
+                jsa.getJSONObject(i).put(ticket.getEventID(),ticket);
+            }
+
+
+        }
     }
     public boolean relistTicketDB(Ticket ticket){
         return false;

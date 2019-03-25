@@ -1,5 +1,6 @@
 package com.example.eventfull;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -83,6 +84,8 @@ public class AddEventActivity extends AppCompatActivity {
                 boolean complete = staff.addEvent(type,venueName,location,name,date,child,adult,capacity,getApplicationContext());
                 if(complete){
                     Toast.makeText(getApplicationContext(),"added Event",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddEventActivity.this,StaffActivity.class);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_LONG).show();
                 }
