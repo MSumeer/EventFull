@@ -1,6 +1,7 @@
 package com.example.eventfull;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,9 +15,9 @@ public class Staff extends User{
     }
 
     public boolean addEvent(String type, String venueName, String venueLocation,
-                            String name, String date, ArrayList<Integer> ticketPrice,
-                            int capacity, int id, Context context){
-        Event event = new Event(type,venueLocation,venueName,date,name,ticketPrice,capacity,id,capacity);
+                            String name, String date, int[] child,int[] adult,
+                            int capacity, Context context){
+        Event event = new Event(type,venueLocation,venueName,date,name,capacity,capacity,child,adult,context);
         return Registry.getInstance().addEventToDB(event,context);
     }
 

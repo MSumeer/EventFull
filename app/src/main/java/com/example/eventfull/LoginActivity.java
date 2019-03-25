@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import org.json.JSONArray;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,7 +18,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText txtUserName = null;
     private EditText txtPassword = null;
-    private JSONArray jsa = null;
 
 
     //onCreate() method invoked once the application starts
@@ -40,14 +38,15 @@ public class LoginActivity extends AppCompatActivity {
 
     //login method verifies the username and password from jsonArray
     public void login() {
-        if(txtUserName.getText().toString().equals("")||txtPassword.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(),"One or more Fields left blank",Toast.LENGTH_LONG).show();
+        if (txtUserName.getText().toString().equals("") || txtPassword.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "One or more Fields left blank", Toast.LENGTH_LONG).show();
             return;
         }
         User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext());
         if (user == null) {
-            Toast.makeText(getApplicationContext(),"Username and/or password is incorrect. Try again.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Username and/or password is incorrect. Try again.", Toast.LENGTH_LONG).show();
         } else {
+
             try {
                 FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);
                 OutputStreamWriter isr = new OutputStreamWriter(fos);
@@ -63,11 +62,18 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
+            Intent intent;
+            if (user instanceof Staff) {
+                intent = new Intent(LoginActivity.this, StaffActivity.class);
+                startActivity(intent);
+            } else {
+                intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
 
         }
     }
-
-
 }
+
+
+

@@ -1,7 +1,6 @@
 package com.example.eventfull;
 
 import android.content.Context;
-import android.util.JsonReader;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -214,7 +213,8 @@ public class Registry {
             jso.put("location",event.getLocation());
             jso.put("Date",event.getDate());
             jso.put("name",event.getName());
-            jso.put("price",event.getPrice());
+            jso.put("child price",event.getChildPrice());
+            jso.put("adult price",event.getAdultPrice());
             jso.put("ticketsRemaining",event.getTicketsRemaining());
             String line;
             while((line =raf.readLine())!=null){
@@ -224,10 +224,15 @@ public class Registry {
                     sb.append(line+"\n");
                 }
             }
+            raf.seek(0);
+            raf.write(sb.toString().getBytes());
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+
         } catch (JSONException e) {
             e.printStackTrace();
+
         }
 
         return false;
@@ -270,11 +275,11 @@ public class Registry {
             if(jso==null){
                 Toast.makeText(context,"Failed",Toast.LENGTH_LONG).show();
             }else{
-                event = new Event(jso.getString("type"),
+                event = new Event(jso.getInt("ID"),jso.getString("type"),
                         jso.getString("location"),jso.getString("venueName"),
                         jso.getString("Date"),jso.getString("name"),
-                        jso.getJSONArray("price"),jso.getInt("capacity"),
-                        jso.getInt("ID"),jso.getInt("ticketsRemaining"));
+                        jso.getInt("capacity"), jso.getInt("ticketsRemaining"),
+                        jso.getJSONArray("childPrice"),jso.getJSONArray("adultPrice"));
             }
 
         } catch (FileNotFoundException e) {

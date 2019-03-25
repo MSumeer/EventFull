@@ -1,54 +1,73 @@
 package com.example.eventfull;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
 
 public class Event {
     private String type , location ,venueName,date, name;
-    private ArrayList <Integer> price;
+    private int[] childPrice,adultPrice;
     private int capacity,ID,ticketsRemaining;
     private boolean available;
 
     //constructor
     public Event(String type, String location, String venueName, String date,
-                 String name, JSONArray jsa, int capacity, int ID,
-                 int ticketsRemaining){
-        this.type = type;
-        this.location = location;
-        this.venueName = venueName;
-        this.date = date;
-        this.name = name;
-        this.capacity = capacity;
-        this.ID = ID;
-        this.ticketsRemaining = ticketsRemaining;
-        price = new ArrayList<Integer>();
-        for(int i = 0;i<jsa.length();i++){
-            try {
-                price.add(jsa.getInt(i));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+                 String name,int capacity, int ticketsRemaining,int[] childPrice,
+                 int[] adultPrice,Context context){
+        try {
+            JSONArray jsa = Registry.getInstance().read(context,"Events.txt");
+            JSONObject jso = jsa.getJSONObject(jsa.length()-1);
+            this.ID = jso.getInt("ID");
+            this.ID++;
+            this.type = type;
+            this.location = location;
+            this.venueName = venueName;
+            this.date = date;
+            this.name = name;
+            this.capacity = capacity;
+            this.ticketsRemaining = ticketsRemaining;
+            this.childPrice = childPrice;
+            this.adultPrice = adultPrice;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
         }
 
     }
 
-    public Event(String type, String location, String venueName, String date,
-                 String name, ArrayList <Integer> price, int capacity, int ID,
-                 int ticketsRemaining){
-        this.type = type;
-        this.location = location;
-        this.venueName = venueName;
-        this.date = date;
-        this.name = name;
-        this.capacity = capacity;
-        this.ID = ID;
-        this.ticketsRemaining = ticketsRemaining;
-        this.price = price;
+    public Event(int ID,String type, String location, String venueName, String date,
+                 String name,int capacity, int ticketsRemaining,JSONArray childPrice,
+                 JSONArray adultPrice){
+        try {
+            this.ID = ID;
+            this.type = type;
+            this.location = location;
+            this.venueName = venueName;
+            this.date = date;
+            this.name = name;
+            this.capacity = capacity;
+            this.ticketsRemaining = ticketsRemaining;
+            if(childPrice!= null) {
+                for (int i = 0; i < childPrice.length(); i++) {
+                    this.childPrice[i] = childPrice.getInt(i);
+                }
+            }else {
+                this.childPrice=null;
+            }
+            for(int i = 0;i<adultPrice.length();i++){
+                this.adultPrice[i]=adultPrice.getInt(i);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
-
     //Class Methods
     public int increaseCapacity(int num){
         return capacity+=num;
@@ -94,15 +113,6 @@ public class Event {
         this.name = name;
     }
 
-    //Price
-    public ArrayList<Integer> getPrice() {
-        return price;
-    }
-
-    public void setPrice(ArrayList<Integer> price) {
-        this.price = price;
-    }
-
     //Capacity
     public int getCapacity() {
         return capacity;
@@ -146,5 +156,21 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int[] getChildPrice() {
+        return childPrice;
+    }
+
+    public void setChildprice(int[] childPrice) {
+        this.childPrice = childPrice;
+    }
+
+    public int[] getAdultPrice() {
+        return adultPrice;
+    }
+
+    public void setAdultPrice(int[] adultPrice) {
+        this.adultPrice = adultPrice;
     }
 }
