@@ -3,9 +3,18 @@ package com.example.eventfull;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class AddEventActivity extends AppCompatActivity {
     @Override
@@ -13,26 +22,38 @@ public class AddEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
-        EditText type = findViewById(R.id.addType);
-        EditText venueName = findViewById(R.id.addVenueName);
-        EditText capacity = findViewById(R.id.addCapacity);
-        EditText location = findViewById(R.id.addLocation);
-        EditText date = findViewById(R.id.addDate);
-        EditText name = findViewById(R.id.addName);
+        final EditText ettype = findViewById(R.id.addType);
+        final EditText etvenueName = findViewById(R.id.addVenueName);
+        final EditText etcapacity = findViewById(R.id.addCapacity);
+        final EditText etlocation = findViewById(R.id.addLocation);
+        final EditText etdate = findViewById(R.id.addDate);
+        final EditText etname = findViewById(R.id.addName);
 
-        Spinner dropdown = findViewById(R.id.spinner1);
+        Button btnAddEvent = findViewById(R.id.btnAdd);
 
-        int[] items = new int[20];
+        btnAddEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String type = ettype.getText().toString().trim();
+                String venueName = etvenueName.getText().toString().trim();
+                int capacity = Integer.parseInt(etcapacity.getText().toString().trim());
+                String location = etlocation.getText().toString().trim();
+                String date = etdate.getText().toString().trim();
+                String name = etname.getText().toString().trim();
 
-        for(int i = 0;i<items.length;i++){
-            items[i] = i;
-        }
+                String regexDOB = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, items);
-
-        dropdown.setAdapter(adapter);
-
-
+                if(type.equals("")||venueName.equals("")||capacity==0||location.equals("")||date.equals("")||name.equals("")){
+                    Toast.makeText(getApplicationContext(),"One or more fields left empty",Toast.LENGTH_LONG).show();
+                    return;
+                }else if(!(date.matches(regexDOB))){
+                    Toast.makeText(getApplicationContext(),"DOB must be in format dd/mm/yyyy",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Event event = new Event(type,location,venueName,date,name,capacity,capacity,getApplicationContext());
+                Registry.getInstance().addEventToDB(event,getApplicationContext());
+            }
+        });
 
     }
 }

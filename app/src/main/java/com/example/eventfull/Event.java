@@ -1,41 +1,60 @@
 package com.example.eventfull;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class Event {
-    private String type , location ,venueName,date, name;
+    private String type , location ,venueName,date, name,priceRange;
     private ArrayList <Integer> price;
     private int capacity,ID,ticketsRemaining;
     private boolean available;
 
     //constructor
     public Event(String type, String location, String venueName, String date,
-                 String name, JSONArray jsa, int capacity, int ID,
-                 int ticketsRemaining){
+                 String name,int capacity, int ticketsRemaining, Context context){
+        try {
+        JSONArray jsa = Registry.getInstance().read(context,"Events.txt");
+        JSONObject jso = jsa.getJSONObject(jsa.length()-1);
+
+        this.ID = jso.getInt("id");
+
+        this.ID++;
         this.type = type;
         this.location = location;
         this.venueName = venueName;
         this.date = date;
         this.name = name;
         this.capacity = capacity;
-        this.ID = ID;
         this.ticketsRemaining = ticketsRemaining;
-        price = new ArrayList<Integer>();
-        for(int i = 0;i<jsa.length();i++){
-            try {
-                price.add(jsa.getInt(i));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+    }
+    public Event(int ID,String type, String location, String venueName, String date,
+                 String name,String priceRange,int capacity, int ticketsRemaining){
+
+            this.ID = ID;
+            this.type = type;
+            this.location = location;
+            this.venueName = venueName;
+            this.date = date;
+            this.name = name;
+            this.capacity = capacity;
+            this.ticketsRemaining = ticketsRemaining;
+
+
 
     }
 
     public Event(String type, String location, String venueName, String date,
-                 String name, ArrayList <Integer> price, int capacity, int ID,
+                 String name, String priceRange, int capacity, int ID,
                  int ticketsRemaining){
         this.type = type;
         this.location = location;
@@ -146,5 +165,14 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    //priceRange
+    public String getPriceRange() {
+        return priceRange;
+    }
+
+    public void setPriceRange(String priceRange) {
+        this.priceRange = priceRange;
     }
 }

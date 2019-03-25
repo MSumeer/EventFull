@@ -214,7 +214,7 @@ public class Registry {
             jso.put("location",event.getLocation());
             jso.put("Date",event.getDate());
             jso.put("name",event.getName());
-            jso.put("price",event.getPrice());
+            jso.put("priceRange",event.getPriceRange());
             jso.put("ticketsRemaining",event.getTicketsRemaining());
             String line;
             while((line =raf.readLine())!=null){
@@ -270,11 +270,11 @@ public class Registry {
             if(jso==null){
                 Toast.makeText(context,"Failed",Toast.LENGTH_LONG).show();
             }else{
-                event = new Event(jso.getString("type"),
+                event = new Event(jso.getInt("ID"),jso.getString("type"),
                         jso.getString("location"),jso.getString("venueName"),
                         jso.getString("Date"),jso.getString("name"),
-                        jso.getJSONArray("price"),jso.getInt("capacity"),
-                        jso.getInt("ID"),jso.getInt("ticketsRemaining"));
+                        jso.getString("priceRange"),jso.getInt("capacity"),
+                        jso.getInt("ticketsRemaining"));
             }
 
         } catch (FileNotFoundException e) {

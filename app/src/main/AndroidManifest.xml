@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WelcomeStaff"></activity>
-        <activity android:name=".AddEvent" />
         <activity android:name=".DetailsOfEvent" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -30,6 +29,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StaffActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddEventActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
