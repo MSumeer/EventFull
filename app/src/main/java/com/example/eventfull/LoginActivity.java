@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext());
         if (user == null) {
-            Toast.makeText(getApplicationContext(),"Login Failed userName or password incorrect",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Username and/or password is incorrect. Try again.",Toast.LENGTH_LONG).show();
         } else {
             try {
                 FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);
