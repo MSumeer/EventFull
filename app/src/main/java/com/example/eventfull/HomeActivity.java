@@ -41,20 +41,21 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         JSONArray read = Registry.getInstance().read(getApplicationContext(), "Events.txt");
-        ArrayList<String> items = new ArrayList<String>();
-        try {
 
+        try {
+            ArrayList<String> items = new ArrayList<String>();
             for (int i = 0; i < read.length(); i++) {
                 JSONObject line = read.getJSONObject(i);
-                String match = line.optString("price");
+                String match = line.optString("name");
                 items.add(match);
             }
+            ListView mylistview = findViewById(R.id.eventList);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+            mylistview.setAdapter(arrayAdapter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ListView mylistview = findViewById(R.id.eventList);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        mylistview.setAdapter(arrayAdapter);
+
     }
 
     public String load(){
@@ -83,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
 
         EditText what = findViewById(R.id.what);
         EditText where = findViewById(R.id.where);
-        EditText When = findViewById(R.id.when);
+        EditText When = findViewById(R.id.When);
 
 
     }

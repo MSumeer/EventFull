@@ -1,10 +1,12 @@
 package com.example.eventfull;
 
+import android.content.Context;
+
 public class SeasonTicketHolder extends Member {
 
     //constructor
-    public SeasonTicketHolder(int id,String firstName, String lastName,String email,String userName, String password){
-        super(id,firstName,lastName,email,userName,password);
+    public SeasonTicketHolder(String firstName, String lastName, String email, String DOB, String userName, String password, Context context){
+        super(firstName,lastName,email,DOB,userName,password,context);
 
 
     }

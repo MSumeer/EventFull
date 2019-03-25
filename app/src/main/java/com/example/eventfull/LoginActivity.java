@@ -40,11 +40,13 @@ public class LoginActivity extends AppCompatActivity {
 
     //login method verifies the username and password from jsonArray
     public void login() {
-
-
-        User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext(), Registry.getInstance(), jsa);
+        if(txtUserName.getText().toString().equals("")||txtPassword.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"One or more Fields left blank",Toast.LENGTH_LONG).show();
+            return;
+        }
+        User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext());
         if (user == null) {
-            //Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Username and/or password is incorrect. Try again.",Toast.LENGTH_LONG).show();
         } else {
             try {
                 FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);

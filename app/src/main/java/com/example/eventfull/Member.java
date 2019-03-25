@@ -1,5 +1,7 @@
 package com.example.eventfull;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class Member extends User {
@@ -9,8 +11,8 @@ public class Member extends User {
 
 
     //constructor
-    public Member(int id,String firstName, String lastName,String email,String userName, String password){
-        super(id,firstName,lastName,email,userName,password);
+    public Member(String firstName, String lastName, String email, String DOB, String userName, String password, Context context){
+        super(firstName,lastName,email,DOB,userName,password,context);
 
     }
 

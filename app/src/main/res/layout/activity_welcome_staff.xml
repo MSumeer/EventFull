@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bluebackground"
+    tools:context=".WelcomeStaff">
+
+    <Button
+        android:id="@+id/buttonContinue"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_as_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditEvent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="cursive"
+        android:text="@string/welcome_staff"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAddEvent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/add_event"
+        app:layout_constraintEnd_toEndOf="@+id/buttonEditEvent"
+        app:layout_constraintStart_toStartOf="@+id/buttonEditEvent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/buttonEditEvent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_event"
+        app:layout_constraintEnd_toEndOf="@+id/buttonContinue"
+        app:layout_constraintStart_toStartOf="@+id/buttonContinue"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddEvent" />
+</android.support.constraint.ConstraintLayout>

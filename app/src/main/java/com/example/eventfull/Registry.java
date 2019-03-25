@@ -1,6 +1,7 @@
 package com.example.eventfull;
 
 import android.content.Context;
+import android.util.JsonReader;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -36,13 +37,19 @@ public class Registry {
 
         //Create a JSONObject to store values
         try {
-            JSONObject obj = new JSONObject();
+            JSONArray jsa = read(context,"Users.txt");
+            JSONObject obj = search(user.getUserName(),jsa);
+
+            if(obj != null){
+                return false;
+            }
+            obj = new JSONObject();
             obj.put("type","member");
-            obj.put("id",0);
+            obj.put("id",user.getId());
             obj.put("firstName", user.getFirstName());
             obj.put("lastName", user.getLastName());
-            obj.put("DOB",user.getDOB());
             obj.put("email", user.getEmail());
+            obj.put("DOB",user.getDOB());
             obj.put("userName", user.getUserName());
             obj.put("password", user.getPassword());
 
@@ -79,9 +86,9 @@ public class Registry {
 
     public JSONArray read(Context context,String fileName){
         //variables needed for reading the file
-        FileInputStream fis;
-        BufferedReader br;
-        InputStreamReader isr;
+        FileInputStream fis = null;
+        BufferedReader br = null;
+        InputStreamReader isr = null;
         StringBuilder json = new StringBuilder();
         JSONArray jsa = null;
         try {
@@ -93,16 +100,22 @@ public class Registry {
             while((line = br.readLine())!=null){ //reads each line till the end
                 json.append(line).append("\n"); //concatenates the string from file to json variable
             }
+            jsa = new JSONArray(json.toString()); // converts the json string to a jsonArray
 
         } catch (FileNotFoundException e) { //catch exception
             e.printStackTrace();
         } catch (IOException e) { //catch exception
             e.printStackTrace();
-        }
-        try {
-            jsa = new JSONArray(json.toString()); // converts the json string to a jsonArray
-        } catch (JSONException e) { //catch exception
+        } catch (JSONException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+                isr.close();
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return jsa; //returns jsonArray
     }
@@ -129,21 +142,19 @@ public class Registry {
     }
 
     // searches for username within array and returns a jsonObject
-    private JSONObject search(String userName, JSONArray jsa){
+    public JSONObject search(String userName, JSONArray jsa){
         JSONObject jso = null;
-        for(int i = 0;i<jsa.length();i++){
-            try {
+        try {
+            for(int i = 0;i<jsa.length();i++){
+
                 if(jsa.getJSONObject(i).getString("userName").equals(userName)){
                     jso = jsa.getJSONObject(i);
+                    return jso;
                 }
 
-            } catch (JSONException e) { //catch Exception
-                e.printStackTrace();
             }
-        }
-
-        if (jso != null){
-            return jso;
+        } catch (JSONException e) { //catch Exception
+            e.printStackTrace();
         }
         return null;
     }
@@ -153,42 +164,42 @@ public class Registry {
         JSONObject jso = search(userName,jsa);
         User user = null;
         try{
-        if(jso!=null){
+            if(jso!=null){
                 switch (jso.getString("type")) {
                     default:
                         Toast.makeText(context, "error", Toast.LENGTH_LONG).show();
-                    case "Admin":
-                        user = new Admin(jso.getInt("id"),
-                                jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("email"),
-                                jso.getString("userName"),jso.getString("password"));
+                    case "admin":
+                        user = new Admin(jso.getString("firstName"),
+                                jso.getString("lastName"), jso.getString("email"),
+                                jso.getString("DOB"), jso.getString("userName"),
+                                jso.getString("password"),context);
                         break;
                     case "member":
-                        user = new Member(Integer.parseInt(jso.getString("id")),
-                                jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("email"),
-                                jso.getString("userName"),jso.getString("password"));
+                        user = new Member(jso.getString("firstName"),
+                                jso.getString("lastName"), jso.getString("email"),
+                                jso.getString("DOB"), jso.getString("userName"),
+                                jso.getString("password"),context);
                         break;
                     case "seasonTicketHolder":
-                        user = new SeasonTicketHolder(Integer.parseInt(jso.getString("id")),
-                                jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("email"),
-                                jso.getString("userName"),jso.getString("password"));
+                        user = new SeasonTicketHolder(jso.getString("firstName"),
+                                jso.getString("lastName"), jso.getString("email"),
+                                jso.getString("DOB"), jso.getString("userName"),
+                                jso.getString("password"),context);
                         break;
                     case "staff":
-                        user = new Staff(Integer.parseInt(jso.getString("id")),
-                                jso.getString("firstName"), jso.getString("lastName"),
-                                jso.getString("email"),
-                                jso.getString("userName"),jso.getString("password"));
+                        user = new Staff(jso.getString("firstName"),
+                                jso.getString("lastName"), jso.getString("email"),
+                                jso.getString("DOB"), jso.getString("userName"),
+                                jso.getString("password"),context);
                         break;
                 }
             }
 
-            } catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return user;
-        }
+    }
 
     public boolean addEventToDB(Event event,Context context){
         try {

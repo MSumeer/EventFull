@@ -1,5 +1,7 @@
 package com.example.eventfull;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -21,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
+        final EditText etDOb = findViewById(R.id.etDOB);
 
         //Assigning the register button to a variable
         final Button btnRegister = findViewById(R.id.btnRegister);
@@ -35,14 +41,38 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString().trim();
                 String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-                User user = new Member(1,firstName,lastName,email,username,password);
-                if(Registry.getInstance().addNewUser(user,getApplicationContext())){
-                    Toast.makeText(getApplicationContext(),"Registered",Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Registration Failed",Toast.LENGTH_LONG).show();
+                String DOB = etDOb.getText().toString().trim();
+
+                String regexEmail = "^[A-Za-z0-9+_.-]+@(.+)$";
+                String regexDOB = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
+
+
+                if (firstName.equals("") || lastName.equals("") || email.equals("") || username.equals("") || password.equals("") || DOB.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Fields left empty", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!(email.matches(regexEmail))) {
+                    Toast.makeText(getApplicationContext(), "Email invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (password.length() < 8) {
+                    Toast.makeText(getApplicationContext(), "Password should be 8 characters or longer", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!(DOB.matches(regexDOB))) {
+                    Toast.makeText(getApplicationContext(), "DOB must be in format dd/mm/yyyy", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                User user = new Member(firstName, lastName, email, DOB, username, password, getApplicationContext());
+
+                if (Registry.getInstance().addNewUser(user, getApplicationContext())) {
+                    Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
+                    Intent main = new Intent(RegisterActivity.this, HomeActivity.class);
+                    startActivity(main);
+                } else {
+                    Toast.makeText(getApplicationContext(), "UserName already exists", Toast.LENGTH_LONG).show();
                 }
 
             }
+
         });
 
     }
