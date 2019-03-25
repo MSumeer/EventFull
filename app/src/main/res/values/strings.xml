@@ -31,9 +31,6 @@
     <string name="PostalCode">PostalCode</string>
     <string name="title_activity_book_event">BookEventActivity</string>
     <string name="eventfull">EventFull</string>
-    <string name="what_are_you_looking_for">What are you looking for?</string>
-    <string name="when">When?</string>
-    <string name="where">Where?</string>
     <string name="todo">TODO</string>
     <string name="search">Search</string>
     <string name="register">Register</string>
@@ -52,4 +49,8 @@
     <string name="edit_event">Edit Event</string>
     <string name="continue_as_user">Continue as User</string>
     <string name="add_event">Add Event</string>
+    <string name="when">When?</string>
+    <string name="where">Where?</string>
+    <string name="what">What?</string>
+    <string name="searchButton">Search</string>
 </resources>
