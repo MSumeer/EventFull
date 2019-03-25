@@ -11,10 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".PurchaseTickets"></activity>
-
-
+        <activity android:name=".RelistTicket"></activity>
+        <activity android:name=".PurchaseTickets" />
         <activity android:name=".DetailsOfEvent" />
         <activity android:name=".MainActivity">
             <intent-filter>

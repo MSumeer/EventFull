@@ -65,4 +65,16 @@
     <string name="location_of_show">LOCATION OF SHOW</string>
     <string name="date_of_show">DATE OF SHOW</string>
     <string name="title_of_show">TITLE OF SHOW</string>
+    <string name="tickets_are_only_reserved_for_30_minutes_once_selected_price_is_only_per_ticket_and_does_not_include_service_fee">Tickets are only reserved for 30 minutes once selected. Price is only per ticket and does not include service fee.</string>
+    <string name="my_account">My Account</string>
+    <string name="event_name_4">Event Name 4</string>
+    <string name="your_upcoming_events">Your upcoming events:</string>
+    <string name="edit_account_details">EDIT ACCOUNT DETAILS</string>
+    <string name="event_name_1">Event Name 1</string>
+    <string name="relist_selected_tickets">RELIST SELECTED TICKETS</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="help_support"><![CDATA[HELP & SUPPORT]]></string>
+    <string name="event_name_2">Event Name 2</string>
+    <string name="event_name_3">Event Name 3</string>
+    <string name="your_account">Your Account...</string>
 </resources>
