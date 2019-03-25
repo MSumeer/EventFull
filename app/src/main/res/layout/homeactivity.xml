@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/where" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnMyAccount"
         android:layout_width="327dp"
         android:layout_height="45dp"
         android:layout_marginBottom="17dp"

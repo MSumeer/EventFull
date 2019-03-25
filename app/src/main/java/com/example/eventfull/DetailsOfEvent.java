@@ -38,6 +38,11 @@ public class DetailsOfEvent extends AppCompatActivity {
         TextView noTickets = findViewById(R.id.txtNumberTickets);
         TextView txtseat = findViewById(R.id.txtSeats);
         TextView txtPrice = findViewById(R.id.txtPrice);
+        txtTitle.setText(event.getName());
+        txtLocation.setText(event.getLocation());
+        txtPrice.setText(event.getPrice());
+        txtDate.setText(event.setDate());
+        noTickets.setText(event.getTicketsRemaining());
         Button btnBook = findViewById(R.id.btnBook);
 
 
@@ -48,7 +53,7 @@ public class DetailsOfEvent extends AppCompatActivity {
                 if(user!=null) {
                     Toast.makeText(getApplicationContext(),"You are not Signed in You must sign in to book",Toast.LENGTH_LONG).show();
                 }else{
-                    Intent intent = new Intent(DetailsOfEvent.this, PaymentActivity.class);
+                    Intent intent = new Intent(DetailsOfEvent.this, PurchaseTickets.class);
                     startActivity(intent);
 
                 }}
@@ -86,23 +91,14 @@ public class DetailsOfEvent extends AppCompatActivity {
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
             String line;
-            while((line=br.readLine())!=null){
-                sb.append(line);
-            }
-
-            JSONObject jso = new JSONObject(sb.toString());
-            event = new Event(jso.getInt("ID"),jso.getString("type"),
-                    jso.getString("location"),jso.getString("venueName"),
-                    jso.getString("Date"),jso.getString("name"),
-                    jso.getInt("capacity"), jso.getInt("ticketsRemaining"),jso.getInt("price"));
+            int id = Integer.parseInt(br.readLine());
+            Registry.getInstance().getEventDB(id,getApplicationContext());
             fis.close();
             isr.close();
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
         return event;

@@ -8,11 +8,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +23,7 @@ import org.json.JSONException;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     User user = null;
+    ArrayList<Event>arr = new ArrayList<>();
     //onCreate() method invoked once the application starts
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +49,27 @@ public class HomeActivity extends AppCompatActivity {
                 JSONObject line = read.getJSONObject(i);
                 String name = line.optString("name");
                 items.add(name);
+                arr.add(i,Registry.getInstance().getEventDB(line.getInt("id"),getApplicationContext()));
             }
             ListView mylistview = findViewById(R.id.eventList);
-             arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+            arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
             mylistview.setAdapter(arrayAdapter);
+            mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    try {
+                        FileOutputStream fos = openFileOutput("event.txt", MODE_PRIVATE);
+                        fos.write(arr.get(position).getID());
+                        fos.close();
+                        Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
+                        startActivity(intent);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }

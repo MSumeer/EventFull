@@ -1,20 +1,24 @@
 package com.example.eventfull;
 
 public class Ticket {
-    private String ID;
-    private int eventID , seatNo;
+    private String section;
+    private int eventID,ID ;
+
+    public Ticket(int eventID,String section,int id){
+        this.eventID = eventID;
+        this.section = section;
+        this.ID = id;
+    }
 
     //Setters and Getters
-    //ID
-    public String getID() {
-        return ID;
+    public String getSection() {
+        return section;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setSection(String section) {
+        this.section = section;
     }
 
-    //EventID
     public int getEventID() {
         return eventID;
     }
@@ -23,12 +27,11 @@ public class Ticket {
         this.eventID = eventID;
     }
 
-    //SeatNo
-    public int getSeatNo() {
-        return seatNo;
+    public int getID() {
+        return ID;
     }
 
-    public void setSeatNo(int seatNo) {
-        this.seatNo = seatNo;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }
