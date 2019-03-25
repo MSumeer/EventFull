@@ -65,4 +65,5 @@
     <string name="location_of_show">LOCATION OF SHOW</string>
     <string name="date_of_show">DATE OF SHOW</string>
     <string name="title_of_show">TITLE OF SHOW</string>
+    <string name="tickets_are_only_reserved_for_30_minutes_once_selected_price_is_only_per_ticket_and_does_not_include_service_fee">Tickets are only reserved for 30 minutes once selected. Price is only per ticket and does not include service fee.</string>
 </resources>
