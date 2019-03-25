@@ -15,9 +15,9 @@ public class Staff extends User{
     }
 
     public boolean addEvent(String type, String venueName, String venueLocation,
-                            String name, String date, int[] child,int[] adult,
+                            String name, String date, int price,
                             int capacity, Context context){
-        Event event = new Event(type,venueLocation,venueName,date,name,capacity,capacity,child,adult,context);
+        Event event = new Event(type,venueLocation,venueName,date,name,capacity,capacity,price,context);
         return Registry.getInstance().addEventToDB(event,context);
     }
 

@@ -5,24 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
 
 public class AddEventActivity extends AppCompatActivity {
     @Override
@@ -36,8 +28,7 @@ public class AddEventActivity extends AppCompatActivity {
         final EditText etLocation = findViewById(R.id.addLocation);
         final EditText etDate = findViewById(R.id.addDate);
         final EditText etName = findViewById(R.id.addName);
-        final EditText etChildPrice = findViewById(R.id.addChildPrice);
-        final EditText etAdultPrice = findViewById(R.id.addAdultPrice);
+        final EditText etPrice = findViewById(R.id.addPrice);
 
         Button btnAddEvent = findViewById(R.id.btnAdd);
 
@@ -50,38 +41,20 @@ public class AddEventActivity extends AppCompatActivity {
                 String location = etLocation.getText().toString().trim();
                 String date = etDate.getText().toString().trim();
                 String name = etName.getText().toString().trim();
-                String childPrice = etChildPrice.getText().toString().trim();
-                String adultPrice = etAdultPrice.getText().toString().trim();
+                int price = Integer.parseInt(etPrice.getText().toString().trim());
 
                 String regexDOB = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
-                String regexPrice = "\\d{2},\\d{2},\\d{2}";
 
-                if(type.equals("")||venueName.equals("")||capacity==0||location.equals("")||date.equals("")||name.equals("")||adultPrice.equals("")){
+                if(type.equals("")||venueName.equals("")||capacity==0||location.equals("")||date.equals("")||name.equals("")){
                     Toast.makeText(getApplicationContext(),"One or more fields left empty",Toast.LENGTH_LONG).show();
                     return;
-                }else if(!(date.matches(regexDOB))){
-                    Toast.makeText(getApplicationContext(),"DOB must be in format dd/mm/yyyy",Toast.LENGTH_LONG).show();
+                }else if(!(date.matches(regexDOB))) {
+                    Toast.makeText(getApplicationContext(), "DOB must be in format dd/mm/yyyy", Toast.LENGTH_LONG).show();
                     return;
-                }else if(!(adultPrice.matches(regexPrice))){
-                    Toast.makeText(getApplicationContext(),"must have at least 3 prices within child and adult prices",Toast.LENGTH_LONG).show();
                 }
-                int[] child = new int[3];
-                int[] adult = new int[3];
 
-                if(childPrice.equals("")){
-                    childPrice = null;
-                }else{
-                    String[] a = childPrice.split(",");
-                    for(int i = 0;i<a.length;i++){
-                        child[i] = Integer.parseInt(a[i]);
-                    }
-                }
-                String[] a = adultPrice.split(",");
-                for(int i = 0;i<a.length;i++){
-                    adult[i]=Integer.parseInt(a[i]);
-                }
                 Staff staff = (Staff)user;
-                boolean complete = staff.addEvent(type,venueName,location,name,date,child,adult,capacity,getApplicationContext());
+                boolean complete = staff.addEvent(type,venueName,location,name,date,price,capacity,getApplicationContext());
                 if(complete){
                     Toast.makeText(getApplicationContext(),"added Event",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddEventActivity.this,StaffActivity.class);
@@ -91,8 +64,10 @@ public class AddEventActivity extends AppCompatActivity {
                 }
             }
         });
+        }
 
-    }
+
+
     public User load(){
         User user = null;
         try{
@@ -113,4 +88,6 @@ public class AddEventActivity extends AppCompatActivity {
         }
         return user;
     }
+
 }
+

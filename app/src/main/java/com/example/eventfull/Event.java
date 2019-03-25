@@ -10,14 +10,12 @@ import org.json.JSONObject;
 
 public class Event {
     private String type , location ,venueName,date, name;
-    private int[] childPrice,adultPrice;
-    private int capacity,ID,ticketsRemaining;
+    private int capacity,ID,ticketsRemaining,price;
     private boolean available;
 
     //constructor
     public Event(String type, String location, String venueName, String date,
-                 String name,int capacity, int ticketsRemaining,int[] childPrice,
-                 int[] adultPrice,Context context){
+                 String name,int capacity, int ticketsRemaining,int price,Context context){
         try {
             JSONArray jsa = Registry.getInstance().read(context,"Events.txt");
             JSONObject jso = jsa.getJSONObject(jsa.length()-1);
@@ -30,8 +28,7 @@ public class Event {
             this.name = name;
             this.capacity = capacity;
             this.ticketsRemaining = ticketsRemaining;
-            this.childPrice = childPrice;
-            this.adultPrice = adultPrice;
+            this.price = price;
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -41,9 +38,8 @@ public class Event {
     }
 
     public Event(int ID,String type, String location, String venueName, String date,
-                 String name,int capacity, int ticketsRemaining,JSONArray childPrice,
-                 JSONArray adultPrice){
-        try {
+                 String name,int capacity, int ticketsRemaining,int price){
+
             this.ID = ID;
             this.type = type;
             this.location = location;
@@ -52,20 +48,7 @@ public class Event {
             this.name = name;
             this.capacity = capacity;
             this.ticketsRemaining = ticketsRemaining;
-            if(childPrice!= null) {
-                for (int i = 0; i < childPrice.length(); i++) {
-                    this.childPrice[i] = childPrice.getInt(i);
-                }
-            }else {
-                this.childPrice=null;
-            }
-            for(int i = 0;i<adultPrice.length();i++){
-                this.adultPrice[i]=adultPrice.getInt(i);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            this.price = price;
 
     }
     //Class Methods
@@ -158,19 +141,11 @@ public class Event {
         this.date = date;
     }
 
-    public int[] getChildPrice() {
-        return childPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setChildprice(int[] childPrice) {
-        this.childPrice = childPrice;
-    }
-
-    public int[] getAdultPrice() {
-        return adultPrice;
-    }
-
-    public void setAdultPrice(int[] adultPrice) {
-        this.adultPrice = adultPrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

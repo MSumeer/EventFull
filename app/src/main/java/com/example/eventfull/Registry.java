@@ -52,8 +52,8 @@ public class Registry {
             obj.put("DOB",user.getDOB());
             obj.put("userName", user.getUserName());
             obj.put("password", user.getPassword());
-            ArrayList<Integer> a = new ArrayList<Integer>()
-            obj.put("tickets",a);
+            JSONArray objjsa = new JSONArray();
+            obj.put("tickets",objjsa);
 
             //Write JSONObject to file
             File file = new File(context.getFilesDir()+"/Users.txt");
@@ -216,8 +216,7 @@ public class Registry {
             jso.put("location",event.getLocation());
             jso.put("Date",event.getDate());
             jso.put("name",event.getName());
-            jso.put("child price",event.getChildPrice());
-            jso.put("adult price",event.getAdultPrice());
+            jso.put("price",event.getPrice());
             jso.put("ticketsRemaining",event.getTicketsRemaining());
             String line;
             while((line =raf.readLine())!=null){
@@ -282,7 +281,7 @@ public class Registry {
                         jso.getString("location"),jso.getString("venueName"),
                         jso.getString("Date"),jso.getString("name"),
                         jso.getInt("capacity"), jso.getInt("ticketsRemaining"),
-                        jso.getJSONArray("childPrice"),jso.getJSONArray("adultPrice"));
+                        jso.getInt("price"));
             }
 
         } catch (FileNotFoundException e) {
@@ -315,11 +314,32 @@ public class Registry {
             JSONObject jso = search(user.getUserName(),jsa);
             JSONArray ticketsJsa = jso.getJSONArray("tickets");
             for(int i = 0;i<ticketsJsa.length();i++){
-                jsa.getJSONObject(i).put(ticket.getEventID(),ticket);
+                JSONObject obj = ticketsJsa.getJSONObject(i);
+                obj.put(Integer.toString(i),ticket);
             }
+            File file = new File(context.getFilesDir()+"/Users.txt");
+            RandomAccessFile raf = new RandomAccessFile(file,"rw");
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while((line =raf.readLine())!=null){
+                if(line.trim().equals("}")){
+                    sb.append("},\n"+jso.toString(8)+"\n");
+                }else{
+                    sb.append(line+"\n");
+                }
+            }
+            raf.seek(0);
+            raf.write(sb.toString().getBytes());
+            raf.close();
 
-
+        }catch(JSONException e){
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return false;
     }
     public boolean relistTicketDB(Ticket ticket){
         return false;
