@@ -41,7 +41,7 @@ public class DetailsOfEvent extends AppCompatActivity {
         txtTitle.setText(event.getName());
         txtLocation.setText(event.getLocation());
         txtPrice.setText(event.getPrice());
-        txtDate.setText(event.setDate());
+        txtDate.setText(event.getDate());
         noTickets.setText(event.getTicketsRemaining());
         Button btnBook = findViewById(R.id.btnBook);
 

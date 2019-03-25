@@ -49,7 +49,6 @@ public class HomeActivity extends AppCompatActivity {
                 JSONObject line = read.getJSONObject(i);
                 String name = line.optString("name");
                 items.add(name);
-                arr.add(i,Registry.getInstance().getEventDB(line.getInt("id"),getApplicationContext()));
             }
             ListView mylistview = findViewById(R.id.eventList);
             arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
@@ -61,15 +60,15 @@ public class HomeActivity extends AppCompatActivity {
                         FileOutputStream fos = openFileOutput("event.txt", MODE_PRIVATE);
                         fos.write(arr.get(position).getID());
                         fos.close();
-                        Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
-                        startActivity(intent);
+
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-            });
+                });
         } catch (JSONException e) {
             e.printStackTrace();
         }
