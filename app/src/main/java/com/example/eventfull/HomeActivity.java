@@ -33,7 +33,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     User user = null;
-    ArrayList<Event>arr = new ArrayList<>();
+    ArrayList<String> items = new ArrayList<String>();
     //onCreate() method invoked once the application starts
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
         JSONArray read = Registry.getInstance().read(getApplicationContext(), "Events.txt");
         final EditText theFilter = (EditText) findViewById(R.id.what);
         try {
-            ArrayList<String> items = new ArrayList<String>();
             for (int i = 0; i < read.length(); i++) {
                 JSONObject line = read.getJSONObject(i);
                 String name = line.optString("name");
@@ -57,18 +56,43 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     try {
+                        Event event = null;
                         FileOutputStream fos = openFileOutput("event.txt", MODE_PRIVATE);
-                        fos.write(arr.get(position).getID());
+                        JSONArray jsa = Registry.getInstance().read(getApplicationContext(),"Events.txt");
+
+                            for(int j = 0;j<jsa.length();j++) {
+                                JSONObject jso = jsa.getJSONObject(j);
+                                if (jsa.getJSONObject(j).getString("name").trim().equals(items.get(position).trim())) {
+                                    event = new Event(jso.getInt("ID"),jso.getString("type"),
+                                            jso.getString("location"),jso.getString("venueName"),
+                                            jso.getString("Date"),jso.getString("name"),
+                                            jso.getInt("capacity"), jso.getInt("ticketsRemaining"),
+                                            jso.getInt("price"));
+                                }
+                            }
+
+
+                        fos.write(Integer.toString(event.getID()).getBytes());
                         fos.close();
-
-
+                        Intent intent = new Intent(HomeActivity.this,DetailsOfEvent.class);
+                        startActivity(intent);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 }
                 });
+            Button relistTicket = findViewById(R.id.btnMyAccount);
+            relistTicket.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent intent = new Intent(HomeActivity.this,RelistTicket.class);
+                    startActivity(intent);
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -40,19 +40,19 @@ public class DetailsOfEvent extends AppCompatActivity {
         TextView txtPrice = findViewById(R.id.txtPrice);
         txtTitle.setText(event.getName());
         txtLocation.setText(event.getLocation());
-        txtPrice.setText(event.getPrice());
+        txtPrice.setText("Price per Ticket : £"+Integer.toString(event.getPrice()));
         txtDate.setText(event.getDate());
-        noTickets.setText(event.getTicketsRemaining());
+        noTickets.setText("Number of Tickets : "+Integer.toString(event.getTicketsRemaining()));
+        //img.setImageDrawable(getDrawable(R.drawable.westham));
         Button btnBook = findViewById(R.id.btnBook);
-
-
 
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user!=null) {
+                if(user==null) {
                     Toast.makeText(getApplicationContext(),"You are not Signed in You must sign in to book",Toast.LENGTH_LONG).show();
                 }else{
+                    Toast.makeText(getApplicationContext(),"payment",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(DetailsOfEvent.this, PurchaseTickets.class);
                     startActivity(intent);
 
@@ -92,7 +92,7 @@ public class DetailsOfEvent extends AppCompatActivity {
             StringBuilder sb = new StringBuilder();
             String line;
             int id = Integer.parseInt(br.readLine());
-            Registry.getInstance().getEventDB(id,getApplicationContext());
+            event = Registry.getInstance().getEventDB(id,getApplicationContext());
             fis.close();
             isr.close();
             br.close();

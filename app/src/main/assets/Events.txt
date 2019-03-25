@@ -7,22 +7,19 @@
 		"location": "London Stratford",
 		"Date": "30/03/2019",
 		"name": "West Ham vs Everton",
-		"childPrice": ["10", "12", "15"],
-		"adultPrice": ["20", "25", "40"],
+		"price": 30,
 		"ticketsRemaining": 57000
 	},
 
 	{
-    		"ID": 2,
-    		"type": "Football",
-    		"venueName": "London Stadium",
-    		"capacity": 57000,
-    		"location": "London Stratford",
-    		"Date": "30/03/2019",
-    		"name": "Manchester United vs. Watford FC",
-    		"price": ["£35", "£45", "£50", "£55", "£65"],
-    		"ticketsRemaining": 57000
-    }
-
-
+		"ID": 2,
+		"type": "Football",
+		"venueName": "London Stadium",
+		"capacity": 57000,
+		"location": "London Stratford",
+		"Date": "30/03/2019",
+		"name": "Manchester United vs. Watford FC",
+		"price": 30,
+		"ticketsRemaining": 57000
+	}
 ]
