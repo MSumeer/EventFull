@@ -47,27 +47,35 @@ public class LoginActivity extends AppCompatActivity {
         User user = User.login(txtUserName.getText().toString(), txtPassword.getText().toString(), getApplicationContext());
         if (user == null) {
             Toast.makeText(getApplicationContext(),"Login Failed userName or password incorrect",Toast.LENGTH_LONG).show();
-        } else {
-            try {
-                FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);
-                OutputStreamWriter isr = new OutputStreamWriter(fos);
-                BufferedWriter bw = new BufferedWriter(isr);
-
-                bw.write(user.getUserName());
-                bw.close();
-                isr.close();
-                fos.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-
+            return;
         }
+
+        try {
+            FileOutputStream fos = openFileOutput("Objects.txt", MODE_PRIVATE);
+            OutputStreamWriter isr = new OutputStreamWriter(fos);
+            BufferedWriter bw = new BufferedWriter(isr);
+
+            bw.write(user.getUserName());
+            bw.close();
+            isr.close();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Intent intent = null;
+        if(user instanceof Staff){
+            //intent = new Intent(LoginActivity.this,StaffActivity.class);
+            //startActivity(intent);
+        }else {
+            intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
+
     }
-
-
 }
+
+
+
